@@ -1,11 +1,11 @@
 import { REQUEST_POST, RECEIVED_POST } from "./action";
 
 export const init_state = {
-    ip:'',
+    addr:'',
     result:''
 }
 
-function transform(state=init_state,action){
+export function transform(state=init_state,action){
     switch (action.type){
         case REQUEST_POST:{
             return Object.assign({},state,{
@@ -14,7 +14,7 @@ function transform(state=init_state,action){
         }
         case RECEIVED_POST:{
             return Object.assign({},state,{
-                result:'result'
+                result:action.payload.result
             })
         }
         default:{
@@ -22,26 +22,6 @@ function transform(state=init_state,action){
         }
 
     }
-}
-
-
-function request(requestData){
-    var result = "";
-    $.ajax({
-        url:'http://127.0.0.1:8080/IPAddr/transform',
-        type:'POST',
-        dataType:'json',
-        data:{            
-            "addr":requestData
-        },
-        xhrFields:{
-            'Access-Control-Allow-Origin': '*'
-        }
-    }).done(function(data){
-        result = data
-        console.log(data)
-    })
-    return result
 }
 
 export default transform
