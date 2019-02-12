@@ -32,7 +32,7 @@ export const fetchPosts = function(content,reactobject) {
       // 这个案例中，我们返回一个等待处理的 promise。
       // 这并不是 redux middleware 所必须的，但这对于我们而言很方便。
   
-      return fetch(`http://127.0.0.1:8080/IPAddr/transform`,{
+      return fetch(`api/IPAddr/transform`,{
           method:'POST',
           headers:{
               'content-type':'application/json'
